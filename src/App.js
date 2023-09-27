@@ -15,10 +15,36 @@ class App extends Component {
     this.setState({ imageUrl: event.target.value });
   }
 
+  onImageSubmit = () => {
+    // fetch('http://localhost:3000/detect', {
+    //     method: 'post',
+    //     headers: {'Content-Type': 'application/json'},
+    //     body: JSON.stringify({
+    //       input: this.state.input
+    //     })
+    //   })
+    //   .then(response => response.json())
+    //   .then(response => {
+    //     console.log(response)
+    //   })
+    //   .catch(err => console.log(err));
+    console.log("Image Done")
+  }
+
   onButtonSubmit = () => {
-    // You can use this.state.imageUrl to do something with the URL
-    // For now, I'm just logging it
-    console.log(this.state.imageUrl);
+    this.setState({imageUrl: this.state.input});
+      fetch('http://localhost:3000/detect', {
+        method: 'post',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          input: this.state.input
+        })
+      })
+      .then(response => response.json())
+      .then(response => {
+        console.log(response)
+      })
+      .catch(err => console.log(err));
   }
 
   render() {
@@ -29,6 +55,7 @@ class App extends Component {
           <ImageLinkForm
             onInputChange={this.onInputChange}
             onButtonSubmit={this.onButtonSubmit}
+            onImageSubmit={this.onImageSubmit}
           />
         </div>
       </div>

@@ -4,7 +4,7 @@ import Box from '@material-ui/core/Box';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
-
+import { Axios } from 'axios';
 const useStyles = makeStyles((theme) => ({
   
     root: {
@@ -12,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
     textAlign: 'center',
   },
   imgBox: {
-    maxWidth: "80%",
-    maxHeight: "80%",
+    maxWidth: "30%",
+    maxHeight: "30%",
     margin: "10px"
   },
   img: {
@@ -25,13 +25,33 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+const API_KEY = "6d207e02198a847aa98d0a2a901485a5"
+
 const Camera = () => {
-  const classes = useStyles();const [source, setSource] = useState("");const handleCapture = (target) => {
+  const classes = useStyles();
+  const [source, setSource] = useState("");
+  const handleCapture = (target) => {
     if (target.files) {
+      // console.log("Pic..")
       if (target.files.length !== 0) {
         const file = target.files[0];
         const newUrl = URL.createObjectURL(file);
         setSource(newUrl);
+        
+        const formData = new FormData();
+ 
+        // Update the formData object
+        formData.append(
+            "myFile",
+            file
+        );
+ 
+        // Details of the uploaded file
+        console.log(formData);
+ 
+        // Request made to the backend api
+        // Send formData object
+        axios.post("http://localhost:3000/upload", formData);
       }
     }
   };
