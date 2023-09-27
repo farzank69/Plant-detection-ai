@@ -3,7 +3,9 @@ import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";const useStyles = makeStyles((theme) => ({
+import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
+
+const useStyles = makeStyles((theme) => ({
   
     root: {
     height: "100%",
@@ -37,7 +39,6 @@ const Camera = () => {
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12}>
-          <h5>Capture your image</h5>
           {source &&
             <Box display="flex" justifyContent="center" border={1} className={classes.imgBox}>
               <img src={source} alt={"snap"} className={classes.img}></img>
