@@ -4,7 +4,8 @@ import Box from '@material-ui/core/Box';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
-import { Axios } from 'axios';
+import { saveAs } from 'file-saver';
+
 const useStyles = makeStyles((theme) => ({
   
     root: {
@@ -25,36 +26,54 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const API_KEY = "6d207e02198a847aa98d0a2a901485a5"
+const saveFileToLocalSystem = (file) => {
+  try {
+    saveAs(file, './captured_image.png'); // Specify the desired file name
+    console.log('File saved successfully.');
+  } catch (error) {
+    console.error('Error saving file:', error);
+  }
+};
+
 
 const Camera = () => {
   const classes = useStyles();
   const [source, setSource] = useState("");
-  const handleCapture = (target) => {
+  const handleCapture = async (target) => {
     if (target.files) {
       // console.log("Pic..")
       if (target.files.length !== 0) {
         const file = target.files[0];
+        console.log(file)
         const newUrl = URL.createObjectURL(file);
         setSource(newUrl);
-        
-        const formData = new FormData();
- 
-        // Update the formData object
-        formData.append(
-            "myFile",
-            file
-        );
- 
-        // Details of the uploaded file
-        console.log(formData);
- 
-        // Request made to the backend api
-        // Send formData object
-        axios.post("http://localhost:3000/upload", formData);
+
+        await sendFileToServer(file);
+
       }
     }
   };
+
+  const sendFileToServer = async (file) => {
+    const formData = new FormData();
+    formData.append('file', file);
+
+    try {
+      const response = await fetch('http://localhost:3000/upload', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (response.ok) {
+        console.log('File uploaded successfully.');
+      } else {
+        console.error('Error uploading file.');
+      }
+    } catch (error) {
+      console.error('Error sending file to server:', error);
+    }
+  };
+
   return (
     <div className={classes.root}>
       <Grid container>

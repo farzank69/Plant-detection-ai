@@ -6,6 +6,8 @@
     "@material-ui/core": "^4.12.4",
     "@material-ui/icons": "^4.11.3",
     "axios": "^1.5.1",
+    "cloudinary": "^1.41.0",
+    "file-saver": "^2.0.5",
     "particles-bg": "^2.5.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
