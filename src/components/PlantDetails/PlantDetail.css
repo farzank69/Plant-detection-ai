@@ -1,29 +1,20 @@
 /* Container for the entire content */
 .image-detail {
   display: grid;
-  grid-template-columns: 40% 60%;
-  gap: 20px;
+  grid-template-columns: 1fr; /* Use a single column for smaller screens */
   max-width: 100%;
   background-color: #ddd;
   margin: 0 auto;
   padding: 20px;
-  box-shadow: 1px 1px 200px black;
+  box-shadow: 1px 1px 10px black; /* Reduced shadow intensity */
   margin-top: 2rem;
 }
 
-/* CSS for the plant-image div */
-#plant-image {
-  width: 100%;
-  background-image: url("tulsi.jpg");
-  background-size: cover;
-  border: 5px solid white;
-  height: 300px;
-}
-
-/* Table styling */
+/* Table and Description styling */
 table {
   width: 100%;
   text-align: left;
+  height: 50%;
 }
 
 th, td {
@@ -37,10 +28,72 @@ th, td {
 
 /* Description styling */
 .image-full-description {
-  grid-column: 1 / span 2;
   margin-top: 20px;
   padding: 20px;
-  border: 5px solid black;
+  border: 5px solid white;
   font-weight: normal;
   text-align: left;
+  width: 250%;
+}
+.image-full-description p {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  width: auto;
+}
+/* Plant image and paragraph at the bottom */
+#plant-image {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100%; /* Create a square aspect ratio */
+  border: 5px solid white;
+  overflow: hidden;
+  height: 80%;
+}
+
+#plant-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#plant-image p {
+  position: absolute;
+  bottom: 0;
+  width: 2vh;
+  height: 10%;
+}
+
+@media (max-width: 768px) {
+  #plant-image p {
+    height: 20%; /* Adjust the height for smaller screens */
+  }
+}
+
+@media (max-width: 768px) {
+  .image-full-description {
+    height: 100%; /* Adjust the height for smaller screens */
+    width: auto;
+  }
+}
+/* Media query for laptops (e.g., screens wider than 768px) */
+@media (min-width: 768px) {
+  .image-detail {
+    grid-template-columns: 40% 60%; /* Use two columns for laptops */
+  }
+
+  /* Adjust table width for laptops */
+  table {
+    width: auto;
+  }
+}
+
+#confi {
+  border: 5px solid white;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  text-align: center;
+  
 }

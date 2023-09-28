@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import './App.css';
-import PlantDetails from './components/PlantDetails/PlantDetails';
 import Navbar from './components/NavBar/NavBar';
-
-
+import PlantDetails from './components/PlantDetails/PlantDetails';
 
 class App extends Component {
   constructor() {  
@@ -51,8 +49,6 @@ class App extends Component {
         console.log(response)
       })
       .catch(err => console.log(err));
-
-
   }
 
   render() {
@@ -64,6 +60,7 @@ class App extends Component {
           <ImageLinkForm/>
           <PlantDetails/>
         </div>
+    
       </div>
     );
   }
