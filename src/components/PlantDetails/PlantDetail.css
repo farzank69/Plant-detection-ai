@@ -1,99 +1,99 @@
+/* Container for the entire content */
 .image-detail {
-    display: grid;
-    gap: 20px;
-    width: 70vw;
-    height: fit-content;
-    max-width: 100%;
-    /* Center the container horizontally */
-    margin: 0 auto;
-    background-color: #ddd;
-    margin-top: 2rem;
-    box-shadow: 1px 1px 200px black;
-}
-.plantImage {
-    width: 100%;
-    height: auto;
-}
-@media (min-width: 768px) {
-    .image-detail {
-        grid-template-columns: 40% 60%;
-    }
+  display: grid;
+  grid-template-columns: 1fr; /* Use a single column for smaller screens */
+  max-width: 100%;
+  background-color: #ddd;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 1px 1px 10px black; /* Reduced shadow intensity */
+  margin-top: 2rem;
 }
 
-@media (max-width: 767px) {
-    .image-detail {
-        width: 100%;
-        grid-template-columns: 100%;
-    }
-}
+/* Table and Description styling */
 table {
-     text-align: left;
+  width: 100%;
+  text-align: left;
+  height: 50%;
 }
+
 th, td {
-    border: 1px solid black;
-    padding: auto;
+  border: 1px solid black;
+  padding: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 600;
 }
-td {
-    overflow-x: auto;
+
+/* Description styling */
+.image-full-description {
+  margin-top: 20px;
+  padding: 20px;
+  border: 5px solid white;
+  font-weight: normal;
+  text-align: left;
+  width: 250%;
+}
+.image-full-description p {
+  margin-top: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  width: auto;
+}
+/* Plant image and paragraph at the bottom */
+#plant-image {
+  width: 100%;
+  position: relative;
+  padding-bottom: 100%; /* Create a square aspect ratio */
+  border: 5px solid white;
+  overflow: hidden;
+  height: 80%;
 }
 
-/*  Making collapsible */
+#plant-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-.collapsible {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
+#plant-image p {
+  position: absolute;
+  bottom: 0;
+  width: 2vh;
+  height: 10%;
+}
+
+@media (max-width: 768px) {
+  #plant-image p {
+    height: 20%; /* Adjust the height for smaller screens */
   }
-  
-  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-  .active, .collapsible:hover {
-    background-color: #ccc;
+}
+
+@media (max-width: 768px) {
+  .image-full-description {
+    height: 100%; /* Adjust the height for smaller screens */
+    width: auto;
+  }
+}
+/* Media query for laptops (e.g., screens wider than 768px) */
+@media (min-width: 768px) {
+  .image-detail {
+    grid-template-columns: 40% 60%; /* Use two columns for laptops */
   }
 
-  .content {
-    padding: 0 18px;
-    display: none;
-    overflow: hidden;
-    background-color: #f1f1f1;
-  }
-  
-/* CSS for the image-detail container */
-.image-detail {
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  
-  /* CSS for the table to prevent overflow */
+  /* Adjust table width for laptops */
   table {
-    width: 60%;
-    table-layout: fixed;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    width: auto;
   }
-  
-  /* Style for table rows and cells */
-  table tr {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  table td {
-    flex: 50%;
-    padding: 5px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+}
 
-
+#confi {
+  border: 5px solid white;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  margin-bottom: 0;
+  text-align: center;
   
+}

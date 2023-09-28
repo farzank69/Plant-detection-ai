@@ -1,48 +1,61 @@
 // ImageDetail.js
 import React from 'react';
 import Camera from '../Camera/Camera';
-
 import "./PlantDetail.css";
+const plantImage = "tulsi.jpg";
+import { Component } from 'react';
 
-const PlantDetails = () => {
-  return (
-    <div className="image-detail"> 
-         <img  className="p" src={''} alt="image" width="100px" height="100px" />
 
-         <table>
-        <tr>
-            <td>Name:</td>
-            <td className='plant-name'>Tulsi</td>
-        </tr>
-        <tr>
-            <td>Scientific Name:</td>
-            <td className='scientific-name'><i>Holy Basil</i></td>
-            
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td className='plant-description'>Tulsi is found in India in every where</td>   
-        </tr>
-        <tr>
-            <td>Geographical:</td>
-            <td className='plant-geo'>India, Himalayas</td> 
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td className='plant-des'>Tulsi is found in India in every where</td>   
-        </tr>
+class PlantDetails extends Component {
+  constructor() {
+    super();
+    this.state = {
+      plantData: {
+        plantimage: 'tulsi.jpg',
+        name: 'Name',
+        scientificName: 'scientific name',
+        geographicalInfo: 'country Name',
+        diseasesCure: 'Diseases cures',
+        description: 'Ocimum tenuiflorum, commonly known as holy basil...',
+      },
+    };
+  }
 
-        <tr>
-            <td>Diseases Cure:</td>
-            <td className='plant-cure '>Cold, Fever o make an animated collapsible, add max-height: 0, overflow: hidden and a transition for the max-height property, to the panel class.
+  render() {
+    const { plantimage, name, scientificName, geographicalInfo, diseasesCure, description } = this.state.plantData;
 
-Then, use JavaScript to slide down the content by setting a calculated max-height, depending on the panel's height on different screen sizes:</td> 
-        </tr>
-
-      </table>
+    return (
+      <div className="image-detail">
+        <div id="plant-image"><img src={plantimage} alt='image' />
+            <p id='confi'>s</p>
          </div>
-
-  );
-};
+        <table>
+          <tr>
+            <td>Name:</td>
+            <td className="plant-name">{name}</td>
+          </tr>
+          <tr>
+            <td>Scientific Name:</td>
+            <td className="scientific-name">
+              <i>{scientificName}</i>
+            </td>
+          </tr>
+          <tr>
+            <td>Geographical:</td>
+            <td className="plant-geo">{geographicalInfo}</td>
+          </tr>
+          <tr>
+            <td>Diseases Cure:</td>
+            <td className="plant-cure">{diseasesCure}</td>
+          </tr>
+        </table>
+        <div className="image-full-description">
+          <p>About</p>
+          {description}
+        </div>
+      </div>
+    );
+  }
+}
 
 export default PlantDetails;

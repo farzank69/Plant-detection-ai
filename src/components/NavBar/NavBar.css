@@ -55,8 +55,7 @@
   }
   
   @media (max-width: 768px) {
-    .right {
-      display: none; /* Hide the right-side links on small screens */
+    .right li {
+      display: none; /* Reduce the margin between right-side links on small screens */
     }
   }
-  

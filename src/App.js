@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ParticlesBg from 'particles-bg';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import './App.css';
+import Navbar from './components/NavBar/NavBar';
+import PlantDetails from './components/PlantDetails/PlantDetails';
+
 import axios from 'axios';
 class App extends Component {
   constructor() {
@@ -63,6 +66,7 @@ class App extends Component {
             onButtonSubmit={this.onButtonSubmit}
           />
         </div>
+    
       </div>
     );
   }
