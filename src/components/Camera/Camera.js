@@ -78,10 +78,6 @@ const Camera = () => {
     <div className={classes.root}>
       <Grid container>
         <Grid item xs={12}>
-          {source &&
-            <Box display="flex" justifyContent="center" border={1} className={classes.imgBox}>
-              <img src={source} alt={"snap"} className={classes.img}></img>
-            </Box>}
           <input
             accept="image/*"
             className={classes.input}

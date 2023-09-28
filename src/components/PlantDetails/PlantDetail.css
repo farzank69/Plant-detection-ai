@@ -1,0 +1,99 @@
+.image-detail {
+    display: grid;
+    gap: 20px;
+    width: 70vw;
+    height: fit-content;
+    max-width: 100%;
+    /* Center the container horizontally */
+    margin: 0 auto;
+    background-color: #ddd;
+    margin-top: 2rem;
+    box-shadow: 1px 1px 200px black;
+}
+.plantImage {
+    width: 100%;
+    height: auto;
+}
+@media (min-width: 768px) {
+    .image-detail {
+        grid-template-columns: 40% 60%;
+    }
+}
+
+@media (max-width: 767px) {
+    .image-detail {
+        width: 100%;
+        grid-template-columns: 100%;
+    }
+}
+table {
+     text-align: left;
+}
+th, td {
+    border: 1px solid black;
+    padding: auto;
+}
+td {
+    overflow-x: auto;
+}
+
+/*  Making collapsible */
+
+.collapsible {
+    background-color: #eee;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+  .active, .collapsible:hover {
+    background-color: #ccc;
+  }
+
+  .content {
+    padding: 0 18px;
+    display: none;
+    overflow: hidden;
+    background-color: #f1f1f1;
+  }
+  
+/* CSS for the image-detail container */
+.image-detail {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  
+  /* CSS for the table to prevent overflow */
+  table {
+    width: 60%;
+    table-layout: fixed;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Style for table rows and cells */
+  table tr {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  table td {
+    flex: 50%;
+    padding: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+
+
+  
