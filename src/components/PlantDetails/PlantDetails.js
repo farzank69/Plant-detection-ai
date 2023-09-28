@@ -1,46 +1,48 @@
 // ImageDetail.js
 import React from 'react';
 import Camera from '../Camera/Camera';
-
 import "./PlantDetail.css";
+const plantImage = "tulsi.jpg";
 
 const PlantDetails = () => {
   return (
     <div className="image-detail"> 
-         <img  className="p" src={''} alt="image" width="100px" height="100px" />
+        <div id='plant-image'> 
+        </div>
 
          <table>
+           
         <tr>
             <td>Name:</td>
             <td className='plant-name'>Tulsi</td>
         </tr>
         <tr>
             <td>Scientific Name:</td>
-            <td className='scientific-name'><i>Holy Basil</i></td>
+            <td className='scientific-name'><i>Ocimum tenuiflorum</i></td>
             
         </tr>
-        <tr>
-            <td>Description:</td>
-            <td className='plant-description'>Tulsi is found in India in every where</td>   
-        </tr>
+       
         <tr>
             <td>Geographical:</td>
-            <td className='plant-geo'>India, Himalayas</td> 
-        </tr>
-        <tr>
-            <td>Description:</td>
-            <td className='plant-des'>Tulsi is found in India in every where</td>   
+            <td className='plant-geo'>India, Himalayas, America, Australia, China, Nepal, Malaysia</td> 
         </tr>
 
         <tr>
             <td>Diseases Cure:</td>
-            <td className='plant-cure '>Cold, Fever o make an animated collapsible, add max-height: 0, overflow: hidden and a transition for the max-height property, to the panel class.
-
-Then, use JavaScript to slide down the content by setting a calculated max-height, depending on the panel's height on different screen sizes:</td> 
-        </tr>
-
+            <td className='plant-cure '>
+            Kidney Stones, Fever, Asthama, Sore throat, Diabetes</td> 
+                  </tr>
       </table>
+
+            <div className='image-full-description'>
+                <h1>About</h1>
+                 Ocimum tenuiflorum, commonly known as holy basil, tulsi or tulasi, and tamole, damole, or domole in Fiji, is an aromatic perennial plant in the family Lamiaceae. It is native to tropical and subtropical regions of Australia, Malesia, Asia, and the western Pacific. It is widely cultivated throughout the Southeast Asian tropics. This plant has escaped from cultivation and has naturalized in many tropical regions of the Americas. It is an agricultural and environmental weed.<br/>
+
+                Tulsi is cultivated for religious and traditional medicine purposes, and also for its essential oil. It is widely used as a herbal tea, commonly used in Ayurveda, and has a place within the Vaishnava tradition of Hinduism, in which devotees perform worship involving holy basil plants or leaves.
+            </div>
          </div>
+
+
 
   );
 };
