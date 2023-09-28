@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import { IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
-import { saveAs } from 'file-saver';
+import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
   
@@ -26,14 +25,6 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const saveFileToLocalSystem = (file) => {
-  try {
-    saveAs(file, './captured_image.png'); // Specify the desired file name
-    console.log('File saved successfully.');
-  } catch (error) {
-    console.error('Error saving file:', error);
-  }
-};
 
 
 const Camera = () => {
@@ -59,16 +50,39 @@ const Camera = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:3000/upload', {
+      const response = await fetch('http://192.168.97.49:3000/upload', {
         method: 'POST',
         body: formData,
+      }).then((response) => response.json())
+      .then((response) => {
+        
+        const data = {
+          imageUrl: 'https://example.com/image.jpg', // Replace with your image URL
+          imageName: response,
+        };
+        
+        // Make a POST request to the server
+        axios.post('http://192.168.97.49:3000/detect', data)
+          .then((response) => {
+            // Handle the response here
+            if (response.status === 200) {
+              console.log(response.data);
+              
+              // You can update state or perform other actions with the response data here
+            } else {
+              console.error('Request failed with status code:', response.status);
+            }
+          })
+          .catch((error) => {
+            // Handle any errors that occurred during the request
+            console.error('An error occurred while making the request:', error);
+          });
+
+
+        console.log(response);
       });
 
-      if (response.ok) {
-        console.log('File uploaded successfully.');
-      } else {
-        console.error('Error uploading file.');
-      }
+      
     } catch (error) {
       console.error('Error sending file to server:', error);
     }
