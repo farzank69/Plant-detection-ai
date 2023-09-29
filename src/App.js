@@ -17,6 +17,7 @@ class App extends Component {
 
   onInputChange = (event) => {
     this.setState({ imageUrl: event.target.value });
+    console.log(this.imageUrl)
   }
 
   
@@ -38,7 +39,7 @@ class App extends Component {
   };
   
   // Make a POST request to the server
-  axios.post('http://192.168.97.49:3000/detect', data)
+  axios.post('http://192.168.1.26:3000/detect', data)
     .then((response) => {
       // Handle the response here
       if (response.status === 200) {
@@ -61,10 +62,12 @@ class App extends Component {
       <div className="App">
         <ParticlesBg type="cobweb" bg={true} />
         <div>
+          <Navbar/>
           <ImageLinkForm
             onInputChange={this.onInputChange}
             onButtonSubmit={this.onButtonSubmit}
           />
+          <PlantDetails/>
         </div>
     
       </div>

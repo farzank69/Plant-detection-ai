@@ -50,7 +50,7 @@ const Camera = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://192.168.97.49:3000/upload', {
+      const response = await fetch('http://192.168.1.26:3000/upload', {
         method: 'POST',
         body: formData,
       }).then((response) => response.json())
@@ -62,7 +62,7 @@ const Camera = () => {
         };
         
         // Make a POST request to the server
-        axios.post('http://192.168.97.49:3000/detect', data)
+        axios.post('http://192.168.1.26:3000/detect', data)
           .then((response) => {
             // Handle the response here
             if (response.status === 200) {
