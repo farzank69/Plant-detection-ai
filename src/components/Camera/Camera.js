@@ -50,6 +50,7 @@ const Camera = () => {
     formData.append('file', file);
 
     try {
+<<<<<<< HEAD
       const response = await fetch('http://192.168.56.1:3000/upload', {
         method: 'POST',
         body: formData,
@@ -77,6 +78,35 @@ const Camera = () => {
               // Handle any errors that occurred during the request
               console.error('An error occurred while making the request:', error);
             });
+=======
+      const response = await fetch('http://192.168.1.26:3000/upload', {
+        method: 'POST',
+        body: formData,
+      }).then((response) => response.json())
+      .then((response) => {
+        
+        const data = {
+          imageUrl: 'https://example.com/image.jpg', // Replace with your image URL
+          imageName: response,
+        };
+        
+        // Make a POST request to the server
+        axios.post('http://192.168.1.26:3000/detect', data)
+          .then((response) => {
+            // Handle the response here
+            if (response.status === 200) {
+              console.log(response.data);
+              
+              // You can update state or perform other actions with the response data here
+            } else {
+              console.error('Request failed with status code:', response.status);
+            }
+          })
+          .catch((error) => {
+            // Handle any errors that occurred during the request
+            console.error('An error occurred while making the request:', error);
+          });
+>>>>>>> 1937a08c0e1c03f97dc2670d83837af4524648b5
 
 
           console.log(response);
