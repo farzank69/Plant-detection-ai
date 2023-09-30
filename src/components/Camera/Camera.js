@@ -6,8 +6,8 @@ import PhotoCameraRoundedIcon from "@material-ui/icons/PhotoCameraRounded";
 import axios from 'axios';
 
 const useStyles = makeStyles((theme) => ({
-  
-    root: {
+
+  root: {
     height: "100%",
     textAlign: 'center',
   },
@@ -50,39 +50,39 @@ const Camera = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://192.168.97.49:3000/upload', {
+      const response = await fetch('http://192.168.56.1:3000/upload', {
         method: 'POST',
         body: formData,
       }).then((response) => response.json())
-      .then((response) => {
-        
-        const data = {
-          imageUrl: 'https://example.com/image.jpg', // Replace with your image URL
-          imageName: response,
-        };
-        
-        // Make a POST request to the server
-        axios.post('http://192.168.97.49:3000/detect', data)
-          .then((response) => {
-            // Handle the response here
-            if (response.status === 200) {
-              console.log(response.data);
-              
-              // You can update state or perform other actions with the response data here
-            } else {
-              console.error('Request failed with status code:', response.status);
-            }
-          })
-          .catch((error) => {
-            // Handle any errors that occurred during the request
-            console.error('An error occurred while making the request:', error);
-          });
+        .then((response) => {
+
+          const data = {
+            imageUrl: 'https://example.com/image.jpg', // Replace with your image URL
+            imageName: response,
+          };
+
+          // Make a POST request to the server
+          axios.post('http://192.168.56.1:3000/process_capture', data)
+            .then((response) => {
+              // Handle the response here
+              if (response.status === 200) {
+                console.log(response.data);
+
+                // You can update state or perform other actions with the response data here
+              } else {
+                console.error('Request failed with status code:', response.status);
+              }
+            })
+            .catch((error) => {
+              // Handle any errors that occurred during the request
+              console.error('An error occurred while making the request:', error);
+            });
 
 
-        console.log(response);
-      });
+          console.log(response);
+        });
 
-      
+
     } catch (error) {
       console.error('Error sending file to server:', error);
     }
